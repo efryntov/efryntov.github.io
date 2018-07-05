@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
     s.source            = { :http => 'https://efryntov.github.io/PsiphonTunnel.zip' }
 
     s.ios.vendored_frameworks = 'PsiphonTunnel.framework'
+    s.ios.public_header_files  = 'PsiphonTunnel.framework/Headers/*.h'
     s.ios.deployment_target = '9.0'
     s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7 x86_64' }
 end  
