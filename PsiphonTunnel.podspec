@@ -5,13 +5,12 @@ Pod::Spec.new do |s|
     s.homepage          = 'https://psiphon3.com'
 
     s.author            = { 'Name' => 'psiphon@example.com' }
-    s.license           = { :type => 'Apache-2.0', :file => 'LICENSE.txt' }
+    s.license           = { :type => 'Custom', :text => 'Custom text' }
 
 
     s.platform          = :ios
     s.source            = { :http => 'https://efryntov.github.io/PsiphonTunnel.zip' }
 
-    s.ios.vendored_frameworks = 'PsiphonTunnel.framework'
+    s.ios.vendored_frameworks = 'Frameworks/PsiphonTunnel.framework'
     s.ios.deployment_target = '9.0'
-    s.pod_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7 x86_64' }
 end  
