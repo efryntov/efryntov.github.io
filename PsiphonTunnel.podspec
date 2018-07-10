@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
 
 
     s.platform          = :ios
-    s.source            = { :http => 'https://efryntov.github.io/PsiphonTunnel.zip' }
+    s.source            = { :http => 'https://efryntov.github.io/Frameworks/PsiphonTunnel.zip' }
 
-    s.ios.vendored_frameworks = 'Frameworks/PsiphonTunnel.framework'
+    s.ios.vendored_frameworks = 'PsiphonTunnel.framework'
     s.ios.deployment_target = '9.0'
 end  
