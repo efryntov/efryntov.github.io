@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+           function submitResult(result){ 
+             if(typeof Pxe.submitResult === "function") {
+        	     Pxe.submitResult(result);
+             }
+             else {
+               console.log(result);
+           }
+  </script>
+    </head>
+    <body>        
+        <div style="float: left;width: 50%;">
+           <input type="text" style="width: 180px;" 
+                   name="myText" id="mytextId" />
+           
+        </div>
+        <div style="clear: both;height: 3px;"> </div>
+        <div>
+          <input value="submit" type="button" name="submit" 
+            id="btnSubmit" onclick="javascript:return submitResult("Hello, world!");" /> 
+        </div>  
+    </body>
+</html>
