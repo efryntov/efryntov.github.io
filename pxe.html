@@ -2,8 +2,42 @@
 <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
 <html>
 <script type="text/javascript">
-  function submitResult(result) {
+  function submitResult() {
+    result = '[
+        {
+            "id": "e325753d-5474-4527-a8b0-364a96e98018",
+            "lang": "fa",
+            "survey": [
+                {
+                    "answer": "good",
+                    "question": "text-messaging"
+                },
+                {
+                    "answer": "ok",
+                    "question": "audio-call-quality"
+                },
+                {
+                    "answer": "bad",
+                    "question": "video-call-quality"
+                }
+            ],
+            "timestamp": 1234,
+            "type": "survey"
+        },
+        {
+            "asn": "0",
+            "download": "2099.08",
+            "id": "e325753d-5474-4527-a8b0-364a96e98018",
+            "jitter": "1.60",
+            "lang": "fa",
+            "latency": "5.69",
+            "timestamp": 1234,
+            "type": "speed-test",
+            "upload": "1067.03"
+        }
+    ]';
     if (typeof Pxe !== "undefined" && typeof Pxe.submitResult === "function") {
+      
       Pxe.submitResult(result);
     }
     else {
