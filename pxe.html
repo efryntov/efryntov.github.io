@@ -38,7 +38,7 @@
   '    ]';
     if (typeof Pxe !== "undefined" && typeof Pxe.submitResult === "function") {
       
-      Pxe.submitResult(result);
+      Pxe.submitResult('https://example.org', result);
     }
     else {
       console.log(result);
