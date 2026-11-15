@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<title>Tesla authorization · Tesla Shift Planner</title>
+<style>body{font:17px/1.6 system-ui,sans-serif;color:#163b3b;background:#f4f8f7;max-width:650px;margin:10vh auto;padding:24px}button{font:inherit;background:#00695c;color:white;border:0;border-radius:8px;padding:12px 18px}textarea{width:100%;box-sizing:border-box;font:13px monospace;min-height:110px}a{color:#00695c}</style>
+<h1 id="title">Tesla authorization</h1>
+<p id="status">This is the callback for the Tesla Shift Planner personal prototype.</p>
+<button id="copy" hidden>Copy authorization response</button>
+<textarea id="fallback" readonly hidden aria-label="Authorization response"></textarea>
+<p>Return to the local setup tool. The setup tool checks that this response belongs to the sign-in it started. Do not post the response in chat or share it publicly.</p>
+<script>
+'use strict';
+const responseUrl = window.location.href;
+const query = new URL(responseUrl).searchParams;
+history.replaceState(null, '', window.location.pathname);
+const status = document.getElementById('status');
+const copy = document.getElementById('copy');
+if (query.has('code') && query.has('state')) {
+  document.getElementById('title').textContent = 'Authorization response received';
+  status.textContent = 'Copy the response below and paste it into the local setup tool. This page has not exchanged it for an access token.';
+  copy.hidden = false;
+  copy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(responseUrl);
+      status.textContent = 'Copied. Return to the local setup tool and paste when prompted.';
+    } catch (_) {
+      const fallback = document.getElementById('fallback');
+      fallback.value = responseUrl;
+      fallback.hidden = false;
+      fallback.select();
+      status.textContent = 'Copy the selected response and paste it into the local setup tool.';
+    }
+  });
+} else if (query.has('error')) {
+  status.textContent = 'Tesla did not complete authorization. Return to the local setup tool and start again.';
+}
+</script>
+</html>
